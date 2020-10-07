@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">
+  <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+  <link type="text/css" rel="stylesheet" href="style.css">
+  <script src="jquery-3.5.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <title>Dice Game</title>
+</head>
+
+<body>
+  <div class="wrapper clearfix">
+
+    <div class="panel-1 active">
+      <div class="pName"  id="name">Player 1</div>
+      <div class="pScore" id="score-1">0</div>
+      <div class="cpBox">
+        <div class="cpLabel">Current</div>
+        <div class="cpScore" id="current-1">0</div>
+      </div>
+    </div>
+
+    <div class="panel-2">
+      <div class="pName"  id="name">Player 2</div>
+      <div class="pScore" id="score-2">0</div>
+      <div class="cpBox">
+        <div class="cpLabel">Current</div>
+        <div class="cpScore" id="current-2">0</div>
+      </div>
+    </div>
+
+    <button class="btn-new"><i class="ion-ios-plus-outline"></i>New game</button>
+    <button class="btn-roll"><i class="ion-ios-loop"></i>Roll dice</button>
+    <button class="btn-hold"><i class="ion-ios-download-outline"></i>Hold</button>
+
+    <img src="dice-5.png" alt="Dice" class="dice">
+
+  </div>
+
+  <script src="app.js"></script>
+  <script src="jquery-3.5.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+</html>
