@@ -9,45 +9,68 @@ GAME RULES:
 
 */
 
-var player, dice, crn1,crn2, str1, str2, flag;
+var player,dice,crn1,crn2,str1,str2,flag,play;
 
-player=0;
-crn1 = crn2 = str1 = str2 = flag = 0;
+init();
 
-$(".dice").hide();
-
-//clickEvent
-$(".btn-roll").click(function()
+//clickNewEvent
+$(".btn-new").click(function ()
 {
-  var dice = Math.floor(Math.random()*6)+1;
-  $(".dice").attr("src", "dice-"+dice+".png").show();
+  init();
+});
 
-  if(dice===1)
+//clickHoldEvent
+$(".btn-hold").click(function()
+{
+  if (play)
   {
-    call();
-  }
-  else
-  {
-    if(player===0)
-    {
-      crn1+=dice; $("#score-1").text(dice); $("#curnt-1").text(crn1);
-    }
-    else
-    {
-      crn2+=dice; $("#score-2").text(dice); $("#curnt-2").text(crn2);
-    }
+    player===0 ? hold1(crn1) : hold2(crn2) ;
+    if (flag) call();
   }
 });
 
-//clickEvent
-$(".btn-hold").click(function()
+//clickRollEvent
+$(".btn-roll").click(function()
 {
-  player===0 ? hold1(crn1) : hold2(crn2) ;
-  if(flag===0) call();
+  if (play)
+  {
+    var dice = Math.floor(Math.random()*6)+1;
+
+    $(".dice").fadeOut('fast');
+    $(".dice").attr("src", "dice-"+dice+".png");
+    $(".dice").fadeIn('fast');
+
+    if(dice===1)
+    {
+      call();
+    }
+    else
+    {
+      if(player===0)
+      {
+        crn1+=dice; $("#score-1").text(dice); $("#curnt-1").text(crn1);
+      }
+      else
+      {
+        crn2+=dice; $("#score-2").text(dice); $("#curnt-2").text(crn2);
+      }
+    }
+  }
 });
 
 
 //predefined function to toggle
+function init()
+{
+  player=crn1=crn2=str1=str2=0;
+  play=flag=true;
+  $(".dice").hide();
+  $("#name1").text("Player X"); $("#name2").text("Player Y");
+  $(".pScore1, .pScore2,.cpBox1, .cpBox2").show();
+  $("#score-1,#score-2,#curnt-1,#curnt-2,#total-1,#total-2").text("0");
+  $(".panel-1").addClass("active"); $(".panel-2").removeClass("active");
+}
+
 function call()
 {
   $(".dice").hide();
@@ -64,9 +87,9 @@ function hold1(crn1)
   if(str1>=50)
   {
     $("#name1").text("WINNER!");
-    $(".panel-1").removeClass("active");
+    $(".panel-1, .panel-2").removeClass("active");
     $(".pScore1, .cpBox1").hide();
-   flag = 1;
+    play=flag=false;
   }
 }
 
@@ -77,8 +100,8 @@ function hold2(crn2)
   if(str2>=50)
   {
     $("#name2").text("WINNER!");
-    $(".panel-2").removeClass("active");
+    $(".panel-1, .panel-2").removeClass("active");
     $(".pScore2, .cpBox2").hide();
-    flag = 1;
+    play=flag=false;
   }
 }
