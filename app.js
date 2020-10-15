@@ -9,11 +9,11 @@ GAME RULES:
 
 */
 
-var player,dice,crn1,crn2,str1,str2,flag,play;
+let player,dice,crn1,crn2,str1,str2,flag,isPlaying;
 
 init();
 
-//clickNewEvent
+//clickNewEvent(Callback Method)
 $(".btn-new").click(function ()
 {
   init();
@@ -22,22 +22,22 @@ $(".btn-new").click(function ()
 //clickHoldEvent
 $(".btn-hold").click(function()
 {
-  if (play)
+  if(isPlaying)
   {
     player===0 ? hold1(crn1) : hold2(crn2) ;
-    if (flag) call();
+    if(flag) call();
   }
 });
 
 //clickRollEvent
 $(".btn-roll").click(function()
 {
-  if (play)
+  if (isPlaying)
   {
     var dice = Math.floor(Math.random()*6)+1;
 
     $(".dice").fadeOut('fast');
-    $(".dice").attr("src", "dice-"+dice+".png");
+    $(".dice").attr("src", `images/dice-${dice}.png`);
     $(".dice").fadeIn('fast');
 
     if(dice===1)
@@ -63,7 +63,7 @@ $(".btn-roll").click(function()
 function init()
 {
   player=crn1=crn2=str1=str2=0;
-  play=flag=true;
+  isPlaying=flag=true;
   $(".dice").hide();
   $("#name1").text("Player X"); $("#name2").text("Player Y");
   $(".pScore1, .pScore2,.cpBox1, .cpBox2").show();
@@ -89,7 +89,7 @@ function hold1(crn1)
     $("#name1").text("WINNER!");
     $(".panel-1, .panel-2").removeClass("active");
     $(".pScore1, .cpBox1").hide();
-    play=flag=false;
+    isPlaying=flag=false;
   }
 }
 
@@ -102,6 +102,6 @@ function hold2(crn2)
     $("#name2").text("WINNER!");
     $(".panel-1, .panel-2").removeClass("active");
     $(".pScore2, .cpBox2").hide();
-    play=flag=false;
+    isPlaying=flag=false;
   }
 }
