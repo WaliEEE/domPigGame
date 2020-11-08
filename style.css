@@ -1,0 +1,121 @@
+/**********************************************
+*** GENERAL
+**********************************************/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(rgba(62, 20, 20, 0.4), rgba(62, 20, 20, 0.4)), url(images/back.jpg);
+  background-size: cover;
+  background-position: center;
+  font-family: Lato;
+  font-weight: 500;
+  position: relative;
+  height: 100vh;
+  color: #9fb1b6;
+}
+
+.panel-1,
+.panel-2 {
+  width: 50%;
+  float: left;
+  height: 500px;
+  padding:100px;
+}
+
+/**********************************************
+*** PLAYERS
+**********************************************/
+
+.pName {
+  font-size: 50px;
+  color: #102754;
+  text-align: center;
+  text-transform:  capitalize;
+  margin: 15px 0 15px;
+  position: relative;
+}
+
+.pScore1, .pScore2 {
+  text-align: center;
+  font-size: 75px;
+  color: #274250;
+  margin-bottom: 125px;
+}
+
+.active {  background-color: 0 10px 25px rgba(247, 247, 247, 0.32); }
+
+.active .pName::after {
+  content: "\2022";
+  font-size: 50px;
+  position: relative;
+  color: #0f2161;
+  top: 3px;
+  left: 50px;
+}
+
+.cpBox1,.cpBox2 {
+  background-color: #eb6d6d;
+  color: #274250;
+  width: 50%;
+  margin: 0 auto;
+  padding: 15px;
+  text-align: center;
+}
+
+.ctBox1, .ctBox2 {
+  background-color: #b8ed88;
+  color: #274250;
+  width: 50%;
+  margin: 0 auto;
+  padding: 12px;
+  text-align: center;
+}
+
+.cpLabel {
+  font-family: 'Fredoka One', cursive;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #222;
+}
+
+.cpScore {
+  font-size: 30px;
+}
+
+button {
+  position: absolute;
+  width: 150px;
+  left: 45%;
+  font-family: 'Fredoka One', cursive;
+  font-size: 17px;
+  text-transform: uppercase;
+  cursor:  pointer;
+  font-weight: 350;
+  border-style:  hidden;
+}
+
+button:hover i { margin-right: 15px;}
+
+i {
+  color: #EB4D4D;
+  display: inline-block;
+  margin-right: 5px;
+  font-size: 30px;
+  transition: margin 0.5s;
+}
+
+.btn-new { top: 50px;}
+.btn-roll { bottom: 230px;}
+.btn-hold { bottom: 165px;}
+
+.dice {
+  position: absolute;
+  left: 46%;
+  top: 175px;
+  height: 100px;
+  box-shadow: 0 0 50px rgba(0, 0, .25, .5);
+}
